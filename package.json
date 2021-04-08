@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "next": "10.0.0",
     "next-plugin-preact": "^3.0.3",
+    "next-seo": "^4.23.0",
     "preact": "^10.5.5",
     "preact-render-to-string": "^5.1.11",
     "react": "npm:@preact/compat@0.0.3",

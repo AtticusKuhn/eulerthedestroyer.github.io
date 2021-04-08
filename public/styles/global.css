@@ -1,0 +1,33 @@
+/* CSS HEX */
+:root {
+  --c1: #0d0106ff;
+  --c2: #3626a7ff;
+  --c3: #657ed4ff;
+  --c4: #ff331fff;
+  --c5: #fbfbffff;
+}
+
+body {
+  background-color: var(--c5);
+  color: var(--c1)
+}
+a{
+  text-decoration: none;
+  transition: 0.3s;
+
+}
+/* unvisited link */
+a:link {
+  color:var(--c3);
+}
+
+/* mouse over link */
+a:hover {
+  color: var(--c2);
+  transition: 1000ms;
+}
+
+/* selected link */
+a:active {
+  color: var(--c2);
+}

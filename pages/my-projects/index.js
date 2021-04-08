@@ -3,14 +3,21 @@ import {useState} from "react"
 // // import ArticlePreview from "@/components/ArticlePreview";
 import {  listProjects, writeToPublic } from "@/lib/generateStaticData/projectGenerator";
 import ProjectPreview from "@/components/ProjectPreview";
+import { NextSeo } from 'next-seo';
 
-export default function Blog({projects}){
+export default function MyProjects({projects}){
   const [searchValue, setSearchValue] = useState('');
   const filteredProjects = projects
     .filter((project) =>
       project.title.toLowerCase().includes(searchValue.toLowerCase())
     );
   return <>
+   <NextSeo
+      openGraph={{
+        title: 'My Projects',
+        description: 'Check out the cool stuff I have been working on, all open source and with live demos',
+      }}
+    />
     <h1>these are my projects</h1>
     <p>Feel free to check them out, I can only have JavaScript and HTML projects here because only they will run on this site</p>
     <input

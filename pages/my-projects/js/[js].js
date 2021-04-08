@@ -1,10 +1,17 @@
 import { listProjects,makeJsString } from "@/lib/generateStaticData/projectGenerator"
+import { NextSeo } from 'next-seo';
 
-export default function bruh({js, title}){
+export default function TryJsProject({js, title}){
   function handleClick(e) {
     eval(js)
   };
   return (<>
+    <NextSeo
+      openGraph={{
+        title: title,
+        description: `You can try out thiss javascript project in your broswer ${project.description}`,
+      }}
+    />
    <h1>Try a JS project</h1>
    <h2>{title}</h2>
    <p id="output" />
