@@ -1,0 +1,26 @@
+div{
+  width: 30px;
+  height: 30px;
+  background-color: green;
+  display: inline-block;
+
+}
+
+#turn{
+  color:blue;
+}
+
+#gamelog{
+  position:absolute;
+  left:360px;
+  top:20px;
+  height:300px;
+  width:200px;
+    overflow: scroll;
+border-style:dashed;
+}
+#logtitle{
+  position:absolute;
+  left:360px;
+  top:4px;
+}
