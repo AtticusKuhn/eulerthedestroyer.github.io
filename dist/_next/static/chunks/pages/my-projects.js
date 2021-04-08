@@ -816,7 +816,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 
 /***/ }),
 
-/***/ 10:
+/***/ 6:
 /*!***************************************************************************************************************************************************************************************************!*\
   !*** multi ./node_modules/@prefresh/core/src/index.js next-client-pages-loader?page=%2Fmy-projects&absolutePagePath=%2Fhome%2Feulerthedestroyer%2Fpersonal_site%2Fpages%2Fmy-projects%2Findex.js ***!
   \***************************************************************************************************************************************************************************************************/
@@ -829,4 +829,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fmy-pro
 
 /***/ })
 
-},[[10,"webpack"]]]);
+},[[6,"webpack"]]]);
