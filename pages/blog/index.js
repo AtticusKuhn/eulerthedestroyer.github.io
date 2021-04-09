@@ -2,7 +2,7 @@ import { getBlogArticles } from "@/lib/generateStaticData/blogGenerator"
 import {useState} from "react"
 import ArticlePreview from "@/components/ArticlePreview";
 import { BlogJsonLd } from 'next-seo';
-
+import { NextSeo } from 'next-seo';
 
 export default function Blog({articles}){
   const [searchValue, setSearchValue] = useState('');
@@ -11,6 +11,13 @@ export default function Blog({articles}){
       article.title.toLowerCase().includes(searchValue.toLowerCase())
     );
   return <>
+     <NextSeo
+      title="Blog"
+      openGraph={{
+        title: 'Blog',
+        description: 'Hear my thoughts and opinions on my blog',
+      }}
+    />
     <BlogJsonLd
       url="https://eulerthedestroyer.github.io/blog"
       title="euler's blog"

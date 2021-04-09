@@ -5,7 +5,7 @@ export function AceCodeViewer({
   language = "javascript"
 } = {}) {
   children=children.trim()
-  console.log({children, language})
+  // console.log({children, language})
   const viewer = useRef(null);
   // const language =
   //   className && className.indexOf("-") > -1

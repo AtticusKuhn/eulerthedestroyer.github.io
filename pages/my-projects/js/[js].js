@@ -1,15 +1,16 @@
 import { listProjects,makeJsString } from "@/lib/generateStaticData/projectGenerator"
 import { NextSeo } from 'next-seo';
 
-export default function TryJsProject({js, title}){
+export default function TryJsProject({js, title, description}){
   function handleClick(e) {
     eval(js)
   };
   return (<>
     <NextSeo
+      title={title}
       openGraph={{
         title: title,
-        description: `You can try out thiss javascript project in your broswer ${project.description}`,
+        description: `You can try out this javascript project in your broswer. ${description}`,
       }}
     />
    <h1>Try a JS project</h1>
@@ -25,7 +26,7 @@ export async function getStaticProps({ params }){
   const projects = await listProjects()
   const project = projects.filter(p=>p.type==="JavaScript").find(p=> p.id===params.js)
   const js = await makeJsString(project)
-  return {props:{js, title:project.title}}
+  return {props:{js, title:project.title, description: project.description}}
 
 }
 export async function getStaticPaths(){

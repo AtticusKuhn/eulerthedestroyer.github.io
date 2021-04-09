@@ -1,4 +1,6 @@
 export default {
+  titleTemplate : 'My Site | %s',
+  defaultTitle : 'My Site',
   openGraph: {
     type: 'website',
     locale: 'en_IE',

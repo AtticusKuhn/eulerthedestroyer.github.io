@@ -12,7 +12,8 @@ export default function MyProjects({projects}){
       project.title.toLowerCase().includes(searchValue.toLowerCase())
     );
   return <>
-   <NextSeo
+    <NextSeo
+      title="my projects"
       openGraph={{
         title: 'My Projects',
         description: 'Check out the cool stuff I have been working on, all open source and with live demos',

@@ -26,9 +26,11 @@
     "rimraf": "^3.0.2"
   },
   "browser": {
-    "fs": false,
     "path": false,
-    "os": false
+    "fs": false,
+    "os": false,
+    "child_process": false,
+    "module":false
   },
   "license": "UNLICENSED"
 }
