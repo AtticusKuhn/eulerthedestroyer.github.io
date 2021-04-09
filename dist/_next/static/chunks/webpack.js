@@ -64,7 +64,7 @@
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
 /******/ 		script.src = __webpack_require__.p + "static/webpack/" + chunkId + "." + hotCurrentHash + ".hot-update.js";
-/******/ 		if ("anonymous") script.crossOrigin = "anonymous";
+/******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
 /******/
@@ -113,7 +113,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "33b3efa664f91ad6b092";
+/******/ 	var hotCurrentHash = "dd475b97375232a4bab5";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -933,9 +933,7 @@
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
 /******/ 				script.src = jsonpScriptSrc(chunkId);
-/******/ 				if (script.src.indexOf(window.location.origin + '/') !== 0) {
-/******/ 					script.crossOrigin = "anonymous";
-/******/ 				}
+/******/
 /******/ 				// create error before stack unwound to get useful stacktrace later
 /******/ 				var error = new Error();
 /******/ 				onScriptComplete = function (event) {

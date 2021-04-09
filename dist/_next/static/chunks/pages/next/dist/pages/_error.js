@@ -415,7 +415,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 
 /***/ }),
 
-/***/ 9:
+/***/ 6:
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** multi ./node_modules/@prefresh/core/src/index.js next-client-pages-loader?page=%2Fnext%2Fdist%2Fpages%2F_error&absolutePagePath=%2Fhome%2Feulerthedestroyer%2Fpersonal_site%2Fnode_modules%2Fnext%2Fdist%2Fpages%2F_error.js ***!
   \************************************************************************************************************************************************************************************************************************************/
@@ -428,4 +428,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fnext%2
 
 /***/ })
 
-},[[9,"webpack"]]]);
+},[[6,"webpack"]]]);
