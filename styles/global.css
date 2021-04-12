@@ -9,12 +9,12 @@
 
 body {
   background-color: var(--c5);
-  color: var(--c1)
+  color: var(--c1);
 }
 a{
   text-decoration: none;
   transition: 0.3s;
-
+  color:var(--c3);
 }
 /* unvisited link */
 a:link {
@@ -30,4 +30,16 @@ a:hover {
 /* selected link */
 a:active {
   color: var(--c2);
+}
+
+input {
+  padding: 0.25em 0.5em;
+  background-color: var(--c5);
+  transition: 180ms ease-in-out;
+  border: 2px solid var(--c1);
+  border-radius: 4px;
+}
+input:focus {
+  border-color: var(--c3);
+  box-shadow: 0 0 0 3px var(--c2);
 }
