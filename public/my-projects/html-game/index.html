@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>HTML game</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="player"></div>
+	<div id="text">
+		<p id="time">0 seconds survived</p>
+		<p id="level">0 level</p>
+		<p id="over">0 deaths</p>
+		<p id="enemy">fodder</p>
+	</div>
+	<div id="title">
+		<h1>HTML Game</h1>
+		<h2>By Euler</h2>
+		<button id = "startbtn">Start</button>
+           <button id = "achbtn">Achievements</button>
+             <button id = "storebtn">Store</button>
+          <button id = "infobtn">Info</button>
+      </div>
+      <div id = "gameoverscreen">
+        <h1>Game over</h1>
+        <button id = "startover">Start over</button>
+      </div>
+       <div id = "store">
+        <h1>store</h1>
+        <div id = "pointsholder"></div>
+        <button id = "buymobility">Increadesed Mobility: 2000 points</button>
+        <button id = "buyskip">Skip Introductiary Level: 10000 points</button>
+      </div>
+      <div id = "ach">
+        <h1>Achievements</h1>
+      <p> Log On To The Game</p>
+      
+      </div>
+      <div id = "info">
+        <h1>Info</h1>
+      <p> This Game is a bullet hell</p>
+       <p>There are 6 levels each associated with an emeny </p>
+              <p> each level lasts 1 minute and a new enemy spawns every 1-2 seconds</p>
+      
+      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="script.js"></script>
+  </body>
+</html>

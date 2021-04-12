@@ -1,4 +1,4 @@
-import {AceCodeViewer} from "@/components/CodeViewer"
+import CodeViewer from "@/components/CodeViewer"
 import JsxParser from 'react-jsx-parser'
 import {style} from "./style"
 // import "./style.css"
@@ -7,7 +7,7 @@ export const ArticleViewer =({article})=>{
   return (<>
     <div id="style-carrier" css={article.style}>
       <JsxParser
-        components={{ AceCodeViewer }}
+        components={{ CodeViewer }}
         jsx={article.file}
       />
     </div>

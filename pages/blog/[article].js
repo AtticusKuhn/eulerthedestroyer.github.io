@@ -1,26 +1,42 @@
 import { getBlogArticles } from "@/lib/generateStaticData/blogGenerator"
 import {ArticleViewer} from "@/components/ArticleViewer/ArticleViewer"
-import { NextSeo } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
+import BackButton from "@/components/BackButton"
 
 const Article = ({article, length, rawText})=>{
+  const description = rawText.substring(0,100)
   return <>
       <NextSeo
-      openGraph={{
-        title: article.title,
-        description: rawText.substring(0,100),
-        url: `https://eulerthedestroyer.github.io/blog/${article.id}`,
-        type: 'article',
-        article: {
-          publishedTime: article.date,
-          authors: [
-            'https://eulerthedestroyer.github.io',
-          ],
-          tags: ['coding', 'programming', 'hacking', 'cryptocurrency', 'javascript', 'python', 'haskell'],
-        },
-      }}
+      title={article.title}
+        openGraph={{
+          title: article.title,
+          description: description,
+          url: `https://eulerthedestroyer.github.io/blog/${article.id}`,
+          type: 'article',
+          article: {
+            publishedTime: article.date,
+            authors: [
+              'https://eulerthedestroyer.github.io',
+            ],
+            tags: ['coding', 'programming', 'hacking', 'cryptocurrency', 'javascript', 'python', 'haskell'],
+          },
+        }}
+    />
+    <ArticleJsonLd
+      url="https://eulerthedestroyer.github.io"
+      title={article.title}
+      images={[
+        "https://eulerthedestroyer.github.io/images/logo.png",
+      ]}
+      datePublished={article.date}
+      authorName={['Leohard Euler']}
+      publisherName="Euler's blog"
+      publisherLogo="https://eulerthedestroyer.github.io/images/logo.png"
+      description={description}
     />
     <h1>{article.title}</h1>
     <p>published {new Date(article.date).toString().split(" ").slice(0,4).join(" ")} |  {length} minute read</p>
+    <BackButton />
     <ArticleViewer article={article} />
   </>
 }

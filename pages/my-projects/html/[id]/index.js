@@ -3,6 +3,7 @@
 import {NextSeo} from "next-seo"
 import { staticPaths, staticProps } from "@/lib/HtmlProjectCommon"
 import {FullIframe} from "@/components/FullIframe"
+import BackButton from "@/components/BackButton"
 export default function HtmlProject({title, url, description}){
   return(<>
   <NextSeo
@@ -14,6 +15,7 @@ export default function HtmlProject({title, url, description}){
     />
    
   <h1>HTML Project:  {title}</h1>
+  <BackButton />
   <FullIframe src={url} /> 
   </>)
 }

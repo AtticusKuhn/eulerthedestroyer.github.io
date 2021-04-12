@@ -1,5 +1,7 @@
 import { listProjects,makeJsString } from "@/lib/generateStaticData/projectGenerator"
 import { NextSeo } from 'next-seo';
+import BackButton from "@/components/BackButton"
+
 
 export default function TryJsProject({js, title, description}){
   function handleClick(e) {
@@ -15,6 +17,7 @@ export default function TryJsProject({js, title, description}){
     />
    <h1>Try a JS project</h1>
    <h2>{title}</h2>
+   <BackButton />
    <p id="output" />
    <div id="container"></div>
    <button onClick={handleClick}>run program</button>

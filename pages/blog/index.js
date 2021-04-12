@@ -43,7 +43,13 @@ export default function Blog({articles}){
 }
 
 export async function getStaticProps(){
-  const articles  = (await getBlogArticles()).sort((a, b) =>Number(new Date(b.date)) - Number(new Date(a.date)))
+  const articles  = (await getBlogArticles()).sort((a, b) =>Number(new Date(b.date)) - Number(new Date(a.date))).map(a=>{
+    return {
+      title:a.title,
+      id:a.id,
+      description:a.id
+    }
+  })
   // console.log({articles})
   return {props:{articles}}
 }

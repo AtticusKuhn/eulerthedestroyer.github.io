@@ -10,7 +10,7 @@ const ArticlePreview = ({ title, description, id }) => {
               {title}
             </h4>
           </div>
-          <p className="text-gray-600 dark:text-gray-400">{description}</p>
+          {/* <p className="text-gray-600 dark:text-gray-400">{description}</p> */}
         </div>
       </a>
     </Link>

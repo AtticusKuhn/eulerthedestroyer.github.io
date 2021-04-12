@@ -9,7 +9,7 @@ export default function MyProjects({projects}){
   const [searchValue, setSearchValue] = useState('');
   const filteredProjects = projects
     .filter((project) =>
-      project.title.toLowerCase().includes(searchValue.toLowerCase())
+      Object.values(project).join(" ").toLowerCase().includes(searchValue.toLowerCase())
     );
   return <>
     <NextSeo
@@ -37,7 +37,8 @@ export async function getStaticProps(){
      description:p.description,
      demoUrl:p.demoUrl,
      title:p.title,
-     fullUrl:p.fullUrl
+     fullUrl:p.fullUrl,
+     language:p.type,
    }
   })
   writeToPublic()

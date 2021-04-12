@@ -1,7 +1,8 @@
 // import { listProjects} from "@/lib/generateStaticData/projectGenerator"
-import { staticPaths, staticProps, FullIframe } from "@/lib/HtmlProjectCommon"
+import { staticPaths, staticProps} from "@/lib/HtmlProjectCommon"
 import {NextSeo} from "next-seo"
-
+import {FullIframe} from "@/components/FullIframe"
+import BackButton from "@/components/BackButton"
 export default function HtmlProject({title, url, description}){
   return(<>
     <NextSeo
@@ -12,32 +13,14 @@ export default function HtmlProject({title, url, description}){
       }}
     />
     <h1>HTML Project: {title}</h1>
+    <BackButton/>
     <FullIframe src={url}/> 
   </>)
 }
 export async function getStaticPaths(){
-  // const projects = await listProjects()
-  // const htmlProjects = projects.filter(p=>p.type==="HTML")
-  // const paths = [].concat(...htmlProjects.map(project=>{
-  //   const files = project
-  //     .zip
-  //     .getEntries()
-  //     .map(f=>f.entryName)
-  //     .filter(f=>f.endsWith(".html") && !f.endsWith("index.html"))
-  //     .map(f=>f.substring(0, f.length-5))
-  //   return files.map(f=>{
-  //     return  {params:{
-  //       id:project.id,
-  //       project:f.split("/").slice(1),
-  //     }}
-  //   })
-  // }))
   const paths = await staticPaths()
   const noIndex = paths
     .filter(p=>!p.params.project[p.params.project.length-1] === "index")
-  
-
-  // console.log(JSON.stringify(paths, null, 2))
   return {
     paths:noIndex,
     fallback: false,
