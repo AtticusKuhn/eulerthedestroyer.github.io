@@ -1,1 +1,0 @@
-:root{--c1:#0d0106;--c2:#3626a7;--c3:#657ed4;--c4:#ff331f;--c5:#fbfbff}body{background-color:var(--c5);color:var(--c1)}a{text-decoration:none;-webkit-transition:.3s;transition:.3s}a:link{color:var(--c3)}a:hover{color:var(--c2);-webkit-transition:1s;transition:1s}a:active{color:var(--c2)}
