@@ -13,6 +13,7 @@ export default function Blog({articles}){
   return <>
      <NextSeo
       title="Blog"
+      description="my thoughts and opinions on programming. Learn about coding and programming."
       openGraph={{
         title: 'Blog',
         description: 'Hear my thoughts and opinions on my blog',
@@ -22,9 +23,7 @@ export default function Blog({articles}){
       url="https://eulerthedestroyer.github.io/blog"
       title="euler's blog"
       images={[
-        'https://eulerthedestroyer.github.io1/photo.jpg',
-        'https://example.com/photos/4x3/photo.jpg',
-        'https://example.com/photos/16x9/photo.jpg',
+        'https://eulerthedestroyer.github.io/images/logo.png',
       ]}
       datePublished={new Date().toISOString()}
       authorName="Leonhard Euler"
@@ -47,7 +46,8 @@ export async function getStaticProps(){
     return {
       title:a.title,
       id:a.id,
-      description:a.id
+      description:a.id,
+      image: a.images && a.images.length > 0 ? a.images[0] : null
     }
   })
   // console.log({articles})

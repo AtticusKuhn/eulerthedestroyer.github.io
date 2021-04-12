@@ -9,6 +9,11 @@ export const ArticleViewer =({article})=>{
       <JsxParser
         components={{ CodeViewer }}
         jsx={article.file}
+        autoCloseVoidElements={true}
+        onError={(e)=>{
+          console.log("[ERROR]:", e)
+          throw e
+        }}
       />
     </div>
     {/* <style jsx>{style}</style> */}

@@ -14,6 +14,7 @@ export default function MyProjects({projects}){
   return <>
     <NextSeo
       title="my projects"
+      description="these are the projects in html and javascript I am currently working on"
       openGraph={{
         title: 'My Projects',
         description: 'Check out the cool stuff I have been working on, all open source and with live demos',

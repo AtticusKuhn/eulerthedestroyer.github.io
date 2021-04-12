@@ -8,6 +8,7 @@ export default function HtmlProject({title, url, description}){
   return(<>
   <NextSeo
       title={title}
+      description={description}
       openGraph={{
         title: title,
         description: `demo of an HTML project: ${description}`,

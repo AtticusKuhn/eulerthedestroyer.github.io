@@ -8,6 +8,7 @@ const Article = ({article, length, rawText})=>{
   return <>
       <NextSeo
       title={article.title}
+      description={description}
         openGraph={{
           title: article.title,
           description: description,
@@ -27,6 +28,7 @@ const Article = ({article, length, rawText})=>{
       title={article.title}
       images={[
         "https://eulerthedestroyer.github.io/images/logo.png",
+        ...(article.images || [])
       ]}
       datePublished={article.date}
       authorName={['Leohard Euler']}
@@ -47,8 +49,6 @@ export async function getStaticProps({ params }){
   const article = articlesList.find(a=>a.id===params.article)
   const rawText=  article.file.replace(/<[^>]+>/g, '')
   const length = Math.ceil((rawText.length)/863)
-  // console.log("file:\n\n\n", article.file)
-  // console.log(article.file)
   return {props:{
     rawText,
     article,

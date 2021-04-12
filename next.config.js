@@ -9,7 +9,10 @@ module.exports = withPreact({
   // experimental: {
   //   modern: true,
   // },
-  assetPrefix,
+  // assetPrefix,
+  images: {
+    domains: ['assets.vercecl.com', 'lh4.googleusercontent.com', 'googleusercontent.com'],
+  },
   env: {
     ASSET_PREFIX: assetPrefix,
   }

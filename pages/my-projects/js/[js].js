@@ -10,6 +10,7 @@ export default function TryJsProject({js, title, description}){
   return (<>
     <NextSeo
       title={title}
+      description={description}
       openGraph={{
         title: title,
         description: `You can try out this javascript project in your broswer. ${description}`,
