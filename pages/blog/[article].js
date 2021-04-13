@@ -3,15 +3,16 @@ import {ArticleViewer} from "@/components/ArticleViewer/ArticleViewer"
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import BackButton from "@/components/BackButton"
 
+import {removeHTML} from "../../utils"
 const Article = ({article, length, rawText})=>{
-  const description = rawText.substring(0,100)
+  // const description = rawText.substring(0,100)
   return <>
       <NextSeo
       title={article.title}
-      description={description}
+      description={article.description}
         openGraph={{
           title: article.title,
-          description: description,
+          description: article.description,
           url: `https://eulerthedestroyer.github.io/blog/${article.id}`,
           type: 'article',
           article: {
@@ -34,7 +35,7 @@ const Article = ({article, length, rawText})=>{
       authorName={['Leohard Euler']}
       publisherName="Euler's blog"
       publisherLogo="https://eulerthedestroyer.github.io/images/logo.png"
-      description={description}
+      description={article.description}
     />
     <h1>{article.title}</h1>
     <p>published {new Date(article.date).toString().split(" ").slice(0,4).join(" ")} |  {length} minute read</p>
@@ -47,7 +48,7 @@ const Article = ({article, length, rawText})=>{
 export async function getStaticProps({ params }){
   const articlesList = await getBlogArticles()
   const article = articlesList.find(a=>a.id===params.article)
-  const rawText=  article.file.replace(/<[^>]+>/g, '')
+  const rawText=  removeHTML(article.file)
   const length = Math.ceil((rawText.length)/863)
   return {props:{
     rawText,

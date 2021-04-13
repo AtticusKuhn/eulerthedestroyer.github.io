@@ -1,22 +1,22 @@
 import { getBlogArticles } from "@/lib/generateStaticData/blogGenerator"
 import {useState} from "react"
-import ArticlePreview from "@/components/ArticlePreview";
+import ArticlePreview from "@/components/Preview/ArticlePreview";
 import { BlogJsonLd } from 'next-seo';
 import { NextSeo } from 'next-seo';
-
 export default function Blog({articles}){
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = articles
     .filter((article) =>
       article.title.toLowerCase().includes(searchValue.toLowerCase())
     );
+  const desc = "Learn about the latest programming, internet, and software news on my blog."
   return <>
      <NextSeo
       title="Blog"
-      description="my thoughts and opinions on programming. Learn about coding and programming."
+      description={desc}
       openGraph={{
         title: 'Blog',
-        description: 'Hear my thoughts and opinions on my blog',
+        description: desc
       }}
     />
     <BlogJsonLd
@@ -27,7 +27,7 @@ export default function Blog({articles}){
       ]}
       datePublished={new Date().toISOString()}
       authorName="Leonhard Euler"
-      description="Learn about the latest programming, internet, and software news on my blog."
+      description={desc}
     />
     <h1>this is my blog</h1>
     <p>click on articles to read</p>
@@ -46,7 +46,7 @@ export async function getStaticProps(){
     return {
       title:a.title,
       id:a.id,
-      description:a.id,
+      description:a.description,
       image: a.images && a.images.length > 0 ? a.images[0] : null
     }
   })

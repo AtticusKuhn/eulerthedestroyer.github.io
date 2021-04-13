@@ -2,7 +2,7 @@
 import {useState} from "react"
 // // import ArticlePreview from "@/components/ArticlePreview";
 import {  listProjects, writeToPublic } from "@/lib/generateStaticData/projectGenerator";
-import ProjectPreview from "@/components/ProjectPreview";
+import ProjectPreview from "@/components/Preview/ProjectPreview";
 import { NextSeo } from 'next-seo';
 
 export default function MyProjects({projects}){
