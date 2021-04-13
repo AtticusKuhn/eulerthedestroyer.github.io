@@ -14,3 +14,7 @@ export const clearDirectory = (directory)=>{
     rimraf('./public/my-projects/*', function () { console.log('done'); });
 }
 export const removeHTML = (html) => html.replace(/<[^>]+>/g, '')
+//this converts camelCase to snake-case
+export function toSnakeCase(name) {
+    return name.toLowerCase().replace(/\s/g, "-")
+}

@@ -3,9 +3,11 @@ import "@/public/styles/global.css"
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import "@/public/styles/prism.css"
+import { useShortcut } from "@/lib/useShortcut";
 
 
 const App = ({ Component, pageProps }) => {
+  useShortcut()
     const { noNav } = pageProps;
     if (noNav)
         return <>
@@ -14,6 +16,7 @@ const App = ({ Component, pageProps }) => {
         </>
     return (
       <Layout>
+        <script type="module"  defer src="/scripts/shortcuts.js" />
         <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </Layout>

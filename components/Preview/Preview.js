@@ -5,7 +5,7 @@ const Preivew = ({title, children, link, image}) => (
       href={link}
     >
       <a className="preview">
-        <img src={image} className="image" />
+        { image && <img alt={`this accurately describes what's going on`} src={image} className="image" />}
         <div className="text">
           <div className="title">{title}</div>
           <div className="body">{children}</div>

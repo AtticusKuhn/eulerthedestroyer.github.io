@@ -36,11 +36,15 @@ a:active {
 input {
   padding: 0.25em 0.5em;
   background-color: var(--c5);
-  transition: 180ms ease-in-out;
-  border: 2px solid var(--c1);
-  border-radius: 4px;
+  transition: 0.5s ease-in-out;
+  border: 0.015ch solid var(--c1);
+  border-radius: 0.3ch;
 }
 input:focus {
   border-color: var(--c3);
   box-shadow: 0 0 0 3px var(--c2);
+}
+h1 { 
+  font-size: 2.5ch;
+  color: var(--c1);
 }
