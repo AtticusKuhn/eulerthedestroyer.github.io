@@ -10,6 +10,7 @@
 body {
   background-color: var(--c5);
   color: var(--c1);
+  font-size:2ch;
 }
 a{
   text-decoration: none;
