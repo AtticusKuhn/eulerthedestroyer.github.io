@@ -16,7 +16,6 @@ const App = ({ Component, pageProps }) => {
         </>
     return (
       <Layout>
-        <script type="module"  defer src="/scripts/shortcuts.js" />
         <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </Layout>

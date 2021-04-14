@@ -1,7 +1,7 @@
 export default {
   titleTemplate : 'My Site | %s',
   defaultTitle : 'My Site',
-  description:"a site to learn about me, my opinions, and my projectss",
+  description:"a site to learn about me, my opinions, and my projects",
   openGraph: {
     type: 'website',
     locale: 'en_IE',
