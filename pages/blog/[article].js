@@ -16,6 +16,14 @@ const Article = ({article, length, reccomendedArticles})=>{
           description: article.description,
           url: `https://eulerthedestroyer.github.io/blog/${article.id}`,
           type: 'article',
+          images: [
+            {
+              url: article.image,
+              width: 800,
+              height: 600,
+              alt: article.title,
+            },
+          ],
           article: {
             publishedTime: article.date,
             authors: [
@@ -29,8 +37,7 @@ const Article = ({article, length, reccomendedArticles})=>{
       url="https://eulerthedestroyer.github.io"
       title={article.title}
       images={[
-        "https://eulerthedestroyer.github.io/images/logo.png",
-        ...(article.images || [])
+        ...(article.images || ["https://eulerthedestroyer.github.io/images/logo.png",])
       ]}
       datePublished={article.date}
       authorName={['Leohard Euler']}

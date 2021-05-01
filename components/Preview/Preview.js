@@ -19,7 +19,7 @@ const Preivew = ({title, children, link, image}) => (
         align-items: center;
         text-decoration: none;
         padding: 1.3vh;
-        margin: 1.3vh 3.1ch 0 3.1ch;
+        margin: 1.3vh 3.1ch 0 3.1vw;
         transition-duration: 1s;
         border-radius: 1vh;
         border: 1px solid var(--c5);
@@ -33,15 +33,15 @@ const Preivew = ({title, children, link, image}) => (
         height: 13vh;
         border-radius: 0.5vh;
         object-fit: cover;
-        margin-right: 1.5ch;
+        margin-right: 1.5vw;
       }
       .text {
         display: flex;
         flex-direction: column;
       }
       .title {
-        font-size: 1.8ch;
-        letter-spacing: 0.03ch;
+        font-size: 1.8vw;
+        letter-spacing: 0.03vw;
         font-weight: 600;
         color: var(--c1);
         margin-bottom: 1.3vh;

@@ -13,7 +13,7 @@ export default function CodeViewer(props) {
     },[props])
     return (<>
         <pre>
-            <code id="help-me" className={className}>
+            <code className={className}>
                 {children}
             </code>
         </pre>

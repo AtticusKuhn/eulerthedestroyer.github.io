@@ -1,13 +1,13 @@
-import { SocialProfileJsonLd } from 'next-seo';
+import { NextSeo, SocialProfileJsonLd } from 'next-seo';
 import Link from 'next/link';
 
 const About =()=>{
   return (<>
     <NextSeo
-      title="about me"
+      title="About Me"
       description="learn all about me"
       openGraph={{
-        title: 'about me',
+        title: 'About Me',
         description: 'learn all about me',
         url: 'https://eulerthedestroyer.github.io/about',
         type: 'profile',

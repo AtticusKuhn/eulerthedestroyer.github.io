@@ -6,6 +6,7 @@ const Layout = ({children})=> <>
         <li><Link href="/"><a>Home</a></Link></li>
         <li><Link href="/blog"><a>Blog</a></Link></li>
         <li><Link href="/my-projects"><a>My Projects</a></Link></li>
+        <li><Link href="/about"><a>About Me</a></Link></li>
       </ul>
     </nav>
   </div>
@@ -53,7 +54,7 @@ const Layout = ({children})=> <>
   .footer {
     background-color:var(--c1);
     color: var(--c4);
-    // width: 100ch;
+    // width: 100vw;
     position:relative;
     display: flex;
     flex-direction: column;

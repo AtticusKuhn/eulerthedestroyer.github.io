@@ -10,7 +10,7 @@
 body {
   background-color: var(--c5);
   color: var(--c1);
-  font-size:2ch;
+  font-size:2vw;
 }
 a{
   text-decoration: none;
@@ -38,13 +38,13 @@ input {
   background-color: var(--c5);
   transition: 0.5s ease-in-out;
   border: 0.015ch solid var(--c1);
-  border-radius: 0.3ch;
+  border-radius: 0.3vw;
 }
 input:focus {
   border-color: var(--c3);
   box-shadow: 0 0 0 3px var(--c2);
 }
 h1 { 
-  font-size: 2.5ch;
+  font-size: 2.5vw;
   color: var(--c1);
 }
