@@ -6,7 +6,7 @@ export const ArticleViewer =({article})=>{
   // console.log("style:\n\n\n: ", article.style)
   return (<>
     <article>
-      <div id="style-carrier" css={article.style}>
+      <div id="style-carrier" >
         <style>{article.style}</style>
         <JsxParser
           components={{ CodeViewer }}
