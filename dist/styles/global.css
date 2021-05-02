@@ -6,7 +6,10 @@
   --c4: #ff331fff;
   --c5: #fbfbffff;
 }
-
+html *:not(head *) :not(script) :not(style) {
+  /* display: flex; */
+  transition: 2s ease-in-out;
+}
 body {
   background-color: var(--c5);
   color: var(--c1);

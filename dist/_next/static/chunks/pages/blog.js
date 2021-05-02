@@ -988,7 +988,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 
 /***/ }),
 
-/***/ 7:
+/***/ 8:
 /*!*************************************************************************************************************************************************************************************!*\
   !*** multi ./node_modules/@prefresh/core/src/index.js next-client-pages-loader?page=%2Fblog&absolutePagePath=%2Fhome%2Feulerthedestroyer%2Fpersonal_site%2Fpages%2Fblog%2Findex.js ***!
   \*************************************************************************************************************************************************************************************/
@@ -1001,4 +1001,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblog&a
 
 /***/ })
 
-},[[7,"webpack"]]]);
+},[[8,"webpack"]]]);
