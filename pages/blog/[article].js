@@ -8,31 +8,6 @@ import Link from "next/link";
 const Article = ({article, length, reccomendedArticles})=>{
   // const description = rawText.substring(0,100)
   return <>
-      <NextSeo
-      title={article.title}
-      description={article.description}
-        openGraph={{
-          title: article.title,
-          description: article.description,
-          url: `https://eulerthedestroyer.github.io/blog/${article.id}`,
-          type: 'article',
-          images: [
-            {
-              url: article.image,
-              width: 800,
-              height: 600,
-              alt: article.title,
-            },
-          ],
-          article: {
-            publishedTime: article.date,
-            authors: [
-              'https://eulerthedestroyer.github.io',
-            ],
-            tags: ['coding', 'programming', 'hacking', 'cryptocurrency', 'javascript', 'python', 'haskell'],
-          },
-        }}
-    />
     <ArticleJsonLd
       url="https://eulerthedestroyer.github.io"
       title={article.title}
@@ -84,6 +59,31 @@ export async function getStaticProps({ params }){
     article,
     length,
     reccomendedArticles,
+    seo:{
+      title: article.title,
+      description: article.description,
+        openGraph:{
+          title: article.title,
+          description: article.description,
+          url: `https://eulerthedestroyer.github.io/blog/${article.id}`,
+          type: 'article',
+          images: [
+            {
+              url: article.image || null,
+              width: 800,
+              height: 600,
+              alt: article.title,
+            },
+          ],
+          article: {
+            publishedTime: article.date,
+            authors: [
+              'https://eulerthedestroyer.github.io',
+            ],
+            tags: ['coding', 'programming', 'hacking', 'cryptocurrency', 'javascript', 'python', 'haskell'],
+          },
+        }
+    }
   }}
 
 }

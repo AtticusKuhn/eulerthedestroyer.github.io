@@ -4,11 +4,13 @@ import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import "@/public/styles/prism.css"
 import { useShortcut } from "@/lib/useShortcut";
-
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 const App = ({ Component, pageProps }) => {
   useShortcut()
-    const { noNav } = pageProps;
+    const { noNav, seo } = pageProps;
+    const mergedSEO = Object.assign(SEO, seo)
+
     // console.log(Object.getOwnPropertyNames(Component))
     // console.log(Component.name)
     // console.log(Component.length)
@@ -28,7 +30,8 @@ const App = ({ Component, pageProps }) => {
         </>
     return (
       <Layout>
-        <DefaultSeo {...SEO} />
+        {/* <DefaultSeo {...SEO} /> */}
+        <NextSeo {...mergedSEO} />
         <Component {...pageProps} />
         {/* {E } */}
       </Layout>
