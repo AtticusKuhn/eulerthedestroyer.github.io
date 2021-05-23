@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { JsxElement } from 'typescript';
+// import { JsxElement } from 'typescript';
 interface PreviewProps {
   title: string
   link: string;

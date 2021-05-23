@@ -2,9 +2,16 @@
 
 import {NextSeo} from "next-seo"
 import { staticPaths, staticProps } from "@/lib/HtmlProjectCommon"
-import {FullIframe} from "@/components/FullIframe"
 import BackButton from "@/components/BackButton"
-export default function HtmlProject({title, url, description}){
+import FullIframe from "@/components/FullIframe"
+
+interface props {
+  title: string;
+  url: string;
+  description: string;
+}
+
+ const HtmlProject: React.FC<props> = ({title, url, description}) =>{
   return(<>
   <NextSeo
       title={title}
@@ -20,6 +27,7 @@ export default function HtmlProject({title, url, description}){
   <FullIframe src={url} /> 
   </>)
 }
+export default HtmlProject
 export async function getStaticPaths(){
   const paths = await staticPaths()
   const indices = paths
@@ -37,12 +45,14 @@ export async function getStaticPaths(){
   };
 }
 
-export async function getStaticProps(ctx){
-  const {foundProject, template} = await staticProps(ctx)
+export async function getStaticProps(ctx : {params: {id:string, project:string}}){
+  const {foundProject, template}  = await staticProps(ctx)
  return {
    props:{
      url:template("index"),
+     //@ts-ignore
      title:foundProject.title,
+     //@ts-ignore
      description: foundProject.description,
    }
  } 

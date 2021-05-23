@@ -7,7 +7,7 @@ import { listProjects} from "@/lib/generateStaticData/projectGenerator"
 export async function staticPaths(){
   const projects = await listProjects()
   const htmlProjects = projects.filter(p=>p.type==="HTML")
-  const paths = [].concat(...htmlProjects.map(project=>{
+  const paths = htmlProjects.map(project=>{
     const files = project
       .zip
       .getEntries()
@@ -20,13 +20,20 @@ export async function staticPaths(){
         project:f.split("/").slice(1),
       }}
     })
-  }))
+  })
+  .flat(1)
   return paths
 }
-export async function staticProps(ctx){
+interface ctx {
+  params :{
+    project: string;
+    id: string;
+  }
+}
+export async function staticProps(ctx: ctx){
   const {params:{project, id}} = ctx
   const projects = await listProjects()
   const foundProject = projects.filter(p=>p.type==="HTML").find(p=> p.id===id)
-  const template = (e) => `/my-projects/${id}/${e}.html`
+  const template = (e: string) => `/my-projects/${id}/${e}.html`
   return {foundProject, template}
 }

@@ -2,15 +2,16 @@ const axios = require("axios")
 const fs = require("fs")
 import {clearDirectory, snakeToCamel} from "../../utils"
 var AdmZip = require('adm-zip');
-const { exec } = require("child_process");
-
+// const { exec } = require("child_process");
+import {exec} from "child_process"
 import webpack from 'webpack';
+import { ADMZipClasss, FullProject, GithubLangResp, Project, ZipEntry } from "types";
 const token =process.env.GITHUB_TOKEN
 // const config = require('../webpack.config');
 
 // var http = require('http');
 
-const projects = [
+const projects: Project[] = [
   {
     title:"an html site",
     description:"I stole this",
@@ -41,7 +42,7 @@ const projects = [
     githubUrl:"eulerthedestroyer/colour-changer-script"
   }
 ]
-async function getZip(file_url){
+async function getZip(file_url: string){
   const branch = (await axios.get(`https://api.github.com/repos/${file_url}`,{headers: {
     'Authorization': `token ${token}` 
   }})).data.default_branch
@@ -52,14 +53,14 @@ async function getZip(file_url){
     }
   });
   const data = req.data
-  const zip = new AdmZip(data);
+  const zip: ADMZipClasss = new AdmZip(data);
   zip.branch = branch;
   return zip
 }
-async function zipEntries(file_url){
-  const zip = await getZip(file_url)
-  return zip.getEntries()
-}
+// async function zipEntries(file_url: string){
+//   const zip = await getZip(file_url)
+//   return zip.getEntries()
+// }
 export const listProjects=async ()=>await Promise.all(projects.map(async (project)=>{
   const type = await classifyProject(project) 
   const zip = (await getZip(project.githubUrl))
@@ -79,14 +80,15 @@ export const listProjects=async ()=>await Promise.all(projects.map(async (projec
     }
   })
 )
-const classifyProject = async (project)=>{
+const classifyProject = async (project: Project)=>{
   const req = await axios.get(`https://api.github.com/repos/${project.githubUrl}/languages`,{
     headers: {
         'Authorization': `token ${token}` 
     }
   })
-  const projectLanguages = req.data
-  const langs = Object.entries(projectLanguages).sort((a,b) => b[1] - a[b])
+  // console.log(req.data)
+  const projectLanguages: GithubLangResp = req.data
+  const langs = Object.entries(projectLanguages).sort((a,b) => b[1] - a[1])
   const biggestLanguage = langs[0][0]
   const isValid = ["JavaScript", "HTML", "CSS"].includes(biggestLanguage)
   if(!isValid) throw `invalid language, expected javascript, html, css but got ${biggestLanguage}`
@@ -102,36 +104,38 @@ export const writeToPublic = async()=>{
     p.zip.extractAllTo(`${process.cwd()}/public/my-projects/`, /*overwrite*/true);
     const cmd = `mv ${process.cwd()}/public/my-projects/${p.id}-${p.zip.branch} ${process.cwd()}/public/my-projects/${p.id}`
     // console.log(cmd)
-    exec(cmd, (error, stdout, stderr) => {console.log("done executing command")})
+    exec(cmd, (_error, _stdout, _stderr) => {console.log("done executing command")})
 
   })
 }
-export async function getProjects(){
-  console.log("getprojects called")
-  return await Promise.all(projects.map(async (project)=>{
-    const files = await zipEntries(project.githubUrl)
-    return{
-      description:project.description, 
-      id:project.githubUrl.split("/")[1],
-      title: snakeToCamel(project.githubUrl),
-      files: files.map(file=>{
-        return {
-          path: file.entryName,
-          file:file.getData().toString("utf-8"),
-        }
-      }),
-    }
-  }))
-}
-const getMainFile =  (project)=>{
-  const files = project.zip.getEntries().map(f=>f.entryName)
+// export async function getProjects(){
+//   console.log("getprojects called")
+//   return await Promise.all(projects.map(async (project)=>{
+//     const files = await zipEntries(project.githubUrl)
+//     return{
+//       description:project.description, 
+//       id:project.githubUrl.split("/")[1],
+//       title: snakeToCamel(project.githubUrl),
+//       files: files.map(file=>{
+//         console.log(file)
+//         console.log(Object.keys(file))
+//         return {
+//           path: file.entryName,
+//           file:file.getData().toString("utf-8"),
+//         }
+//       }),
+//     }
+//   }))
+// }
+const getMainFile =  (project: FullProject)=>{
+  const files: string[] = project.zip.getEntries().map((f: ZipEntry)=>f.entryName)
   // console.log({files})
   const possibilities = [/.*index.html/, /.*main.js/, /.*index.js/, /.*src\/index.html/, /.*src\/index.js/]
   const intersection = files.filter(f=> possibilities.some(regex => regex.test(f)))
   if(intersection.length===0) throw `cannot find main file of ${project.title}`
   return intersection[0]
 }
-export const makeJsString = async (project)=>{
+export const makeJsString = async (project: FullProject)=>{
   const temp = `${process.cwd()}/temp`
   const zip = await getZip(project.githubUrl)
   zip.extractAllTo(temp, true)
@@ -145,10 +149,13 @@ export const makeJsString = async (project)=>{
       path: output,
     }
   });
-  return new Promise((resolve, reject)=>{
-  compiler.run((err, stats) => {  
+  return new Promise((resolve, _reject)=>{
+  compiler.run((_err, stats) => {  
+    if(!stats){
+      return
+    }
       const data = stats.toJson();
-
+      //@ts-ignore
       const app = data.assetsByChunkName.app[0] //here you can get the file name  
       // if you don't have chunks then you should use data.assets;
 

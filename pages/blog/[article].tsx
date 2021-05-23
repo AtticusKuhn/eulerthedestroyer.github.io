@@ -1,11 +1,11 @@
-import { getBlogArticles } from "@/lib/generateStaticData/blogGenerator"
-import {ArticleViewer} from "@/components/ArticleViewer/ArticleViewer"
-import { NextSeo, ArticleJsonLd } from 'next-seo';
-import BackButton from "@/components/BackButton"
-import ArticlePreview from "@/components/Preview/ArticlePreview"
-import {randomItemsFromArray, removeHTML} from "../../utils"
+import { ArticleViewer } from "@/components/ArticleViewer/ArticleViewer";
+import BackButton from "@/components/BackButton";
+import ArticlePreview from "@/components/Preview/ArticlePreview";
+import { getBlogArticles } from "@/lib/generateStaticData/blogGenerator";
+import { ArticleJsonLd } from 'next-seo';
 import Link from "next/link";
 import { Article } from "types";
+import { randomItemsFromArray, removeHTML } from "../../utils";
 const ArticlePage = ({article, length, reccomendedArticles} : {article: Article,length: number, reccomendedArticles: Article[]})=>{
   // const description = rawText.substring(0,100)
   return <>

@@ -113,3 +113,38 @@ export interface Component {
   head: string;
   tail:string;
 }
+export type language = "javaScript" | "HTML"
+
+export interface Project {
+  title:string;
+  description:string
+  githubUrl: string
+}
+export interface FullProject {
+  description: string;
+  id: string;
+  title: any;
+  githubUrl: string;
+  fullUrl: string;
+  type: string;
+  zip: any;
+  demoUrl: string;
+}
+
+export interface ZipEntry {
+  entryName: string;
+  name: string;
+  comment: string;
+  isDirectory: boolean;
+  toString: ()=> string;
+}
+export interface GithubLangResp {
+  [language: string]: number;
+}
+
+export interface ADMZipClasss {
+  branch?: string;
+  getEntries: ()=>ZipEntry[];
+  extractEntryTo: (  targetPath: string,  maintainEntryPath?: boolean, overwrite?: boolean)=> void;
+   extractAllTo : ( targetPath: string,  overwrite?: boolean) => void;
+}
