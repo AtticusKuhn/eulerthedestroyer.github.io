@@ -6,10 +6,10 @@
   --c4: #ff331fff;
   --c5: #fbfbffff;
 }
-html *:not(head *) :not(script) :not(style) {
-  /* display: flex; */
+/* html *:not(head *) :not(script) :not(style) {
+  /* display: flex; 
   transition: 2s ease-in-out;
-}
+} */
 body {
   background-color: var(--c5);
   color: var(--c1);
@@ -17,7 +17,7 @@ body {
 }
 a{
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.3s !important;
   color:var(--c3);
 }
 /* unvisited link */
@@ -28,7 +28,7 @@ a:link {
 /* mouse over link */
 a:hover {
   color: var(--c2);
-  transition: 1000ms;
+  transition: 500ms;
 }
 
 /* selected link */
@@ -39,7 +39,7 @@ a:active {
 input {
   padding: 0.25em 0.5em;
   background-color: var(--c5);
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out !important ;
   border: 0.015ch solid var(--c1);
   border-radius: 0.3vw;
 }

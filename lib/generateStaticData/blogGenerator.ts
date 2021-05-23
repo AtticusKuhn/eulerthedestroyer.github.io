@@ -1,17 +1,16 @@
 //this file converts content
 
 import { removeHTML, toSnakeCase } from "utils"
-
+import {Article, APIresponse, Component} from "types"
 //from the CMS into pages
-const axios = require("axios")
-
+import axios from "axios"
 // this gets the google docs data for the blog
-export async function getBlogArticles() {
+export async function getBlogArticles(): Promise<Article[]> {
     const folder =process.env.BLOG_FOLDER
     const url = `https://www.googleapis.com/drive/v2/files?q='${folder}'+in+parents&key=${process.env.GOOGLE_API_KEY}`
-    const data = await axios.get(url)
+    const data: APIresponse = (await axios.get(url)).data
     console.log("making a req")
-    const articles = await Promise.all(data.data.items.map(async (item) => {
+    const articles = await Promise.all(data.items.map(async (item) => {
         const fileReq = await axios.get(item.exportLinks["text/html"])
         let {file, style, images} = processHTML(fileReq.data)
         return {
@@ -27,27 +26,27 @@ export async function getBlogArticles() {
     }))
     return articles
 }
-const convertToHTML = (s) =>
+const convertToHTML = (s:string):string =>
   s
     .replace(/&/g, "&amp;")
     .replace(/>/g, "&gt;")
     .replace(/</g, "&lt;")
     .replace(/"/g, "&quot;");
 // turns component into regex string
-const inComponent = (component, s) =>
+const inComponent = (component: Component, s: string) =>
   `(?<=${component.head}.*?)${s}.*?(?=.*${component.tail})`;
 // turns component into regex
-const makeRegex = (component, s) => new RegExp(inComponent(component, s), "g");
+const makeRegex = (component: Component, s: string) => new RegExp(inComponent(component, s), "g");
 //takes HTML given to us by google docs and turns that into usable HTML for pages
 
-export const processHTML = (html) => {
+export const processHTML = (html: string) => {
   const Components = [
     "```.```",
   ].map((e) => {
-    e = e.split(".");
+    const [head, tail] = e.split(".");
     return {
-      head: e[0],
-      tail: e[1],
+      head,
+      tail,
       headEncoded: convertToHTML(e[0]),
       tailEncoded: convertToHTML(e[1])
     };
@@ -72,7 +71,7 @@ export const processHTML = (html) => {
         .replace(/<head[^>]*>/ig, '')
         .replace(/<\/head[^>]*>/ig, '')
         .replace(/<meta[^>]*>/ig, '');
-  const images  = noHead.match(/(?<=\<img [^>]*src=")([^"]+)(?=")/ig)
+  const images: string[]  = noHead.match(/(?<=\<img [^>]*src=")([^"]+)(?=")/ig) ?? []
   return {
     style,
     file:noHead,

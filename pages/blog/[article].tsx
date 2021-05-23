@@ -5,7 +5,8 @@ import BackButton from "@/components/BackButton"
 import ArticlePreview from "@/components/Preview/ArticlePreview"
 import {randomItemsFromArray, removeHTML} from "../../utils"
 import Link from "next/link";
-const Article = ({article, length, reccomendedArticles})=>{
+import { Article } from "types";
+const ArticlePage = ({article, length, reccomendedArticles} : {article: Article,length: number, reccomendedArticles: Article[]})=>{
   // const description = rawText.substring(0,100)
   return <>
     <ArticleJsonLd
@@ -38,14 +39,14 @@ const Article = ({article, length, reccomendedArticles})=>{
 }
 
 
-export async function getStaticProps({ params }){
+export async function getStaticProps({ params }: {params: {article: string}}){
   const articlesList = await getBlogArticles()
-  const article = articlesList.find(a=>a.id===params.article)
+  const article = articlesList.find(a=>a.id===params.article) as Article
   const rawText=  removeHTML(article.file)
   const length = Math.ceil((rawText.length)/863)
   const reccomendedArticles = randomItemsFromArray(articlesList
     .filter(a=>a.id!==params.article), 3)
-    .map(a=>{
+    .map((a: Article)=>{
       return {
         title:a.title,
         id:a.id,
@@ -90,7 +91,7 @@ export async function getStaticProps({ params }){
 export async function getStaticPaths(){
   const articlesList = await getBlogArticles()
     return {
-    paths: articlesList.map((a) => ({
+    paths: articlesList.map((a: Article) => ({
       params: {
         article: a.id
       }
@@ -100,4 +101,4 @@ export async function getStaticPaths(){
 }
 
 
-export default Article
+export default ArticlePage

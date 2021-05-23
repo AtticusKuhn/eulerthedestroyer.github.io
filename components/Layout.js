@@ -1,4 +1,4 @@
-import Link from "@/components/Link"
+import Link from "next/link"
 const Layout = ({children})=> <>
   <div clasName="top">
     <nav>
@@ -92,6 +92,7 @@ li {
 }
 
 li a {
+  font-size:2vw;
   display: block;
   color: var(--c4);
   text-align: center;

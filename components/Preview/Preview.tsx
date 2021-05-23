@@ -1,5 +1,11 @@
-import Link from '@/components/Link';
-const Preivew = ({title, children, link, image}) => (
+import Link from 'next/link';
+import { JsxElement } from 'typescript';
+interface PreviewProps {
+  title: string
+  link: string;
+  image: string; 
+}
+const Preivew:React.FC<PreviewProps> = ({title, children, link, image}) => (
   <>
     <Link
       href={link}

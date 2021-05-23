@@ -3,7 +3,8 @@ import {useState} from "react"
 import ArticlePreview from "@/components/Preview/ArticlePreview";
 import { BlogJsonLd } from 'next-seo';
 import { NextSeo } from 'next-seo';
-export default function Blog({articles}){
+import { Article } from "types";
+export default function Blog({articles}: {articles: Article[]}){
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = articles
     .filter((article) =>
@@ -26,6 +27,7 @@ export default function Blog({articles}){
         'https://eulerthedestroyer.github.io/images/logo.png',
       ]}
       datePublished={new Date().toISOString()}
+      dateModified={new Date().toISOString()}
       authorName="Leonhard Euler"
       description={desc}
     />

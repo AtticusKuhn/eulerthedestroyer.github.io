@@ -9,7 +9,8 @@
     "deploy": "cross-env NODE_ENV=production next build && next export -o dist && touch dist/.nojekyll && git add dist && git commit -m \"Initial dist subtree commit\" && git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "adm-zip": "^0.5.5",
@@ -30,7 +31,7 @@
     "fs": false,
     "os": false,
     "child_process": false,
-    "module":false
+    "module": false
   },
   "license": "UNLICENSED"
 }
