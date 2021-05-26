@@ -1,7 +1,7 @@
-import { listProjects,makeJsString } from "@/lib/generateStaticData/projectGenerator"
+import BackButton from "@/components/BackButton";
+import { listProjects, makeJsString } from "@/lib/generateStaticData/projectGenerator";
 import { NextSeo } from 'next-seo';
-import BackButton from "@/components/BackButton"
-import { FullProject, Project } from "types";
+import { FullProject } from "types";
 
 interface props {
   js: string;

@@ -1,7 +1,6 @@
-import Link from "next/link"
 import { language } from "types"
-
 import Preview from "./Preview"
+
 interface props {
   title: string;
   description: string;
@@ -10,7 +9,7 @@ interface props {
   language: language
 }
 
-const ProjectPreview: React.FC<props> =({title, description, fullUrl, demoUrl, language})=>{
+const ProjectPreview: React.FC<props> =({title, description,  demoUrl, language})=>{
   // console.log({demoUrl, fullUrl})
   return (<>
     <Preview children={description}

@@ -1,9 +1,8 @@
 // import { listProjects} from "@/lib/generateStaticData/projectGenerator"
-import { staticPaths, staticProps} from "@/lib/HtmlProjectCommon"
-import {NextSeo} from "next-seo"
 import BackButton from "@/components/BackButton"
-import { GetStaticProps } from "next"
 import FullIframe from "@/components/FullIframe"
+import { staticPaths, staticProps } from "@/lib/HtmlProjectCommon"
+import { NextSeo } from "next-seo"
 
 interface props {
   title: string;
@@ -36,17 +35,23 @@ export async function getStaticPaths(){
     fallback: false,
   };
 }
+interface ctx {
+  params:{
+    id: string;
+    project:string[];
+  }
+}
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getStaticProps = async (ctx: ctx) => {
   //@ts-ignore
   const {foundProject, template} = await staticProps(ctx)
+  if(!foundProject){
+    throw `cannot find project `
+  }
  return {
    props:{
-  //@ts-ignore
-     url: template(ctx.project.join("/")),
-  //@ts-ignore
+     url: template(ctx.params.project.join("/")),
      title:foundProject.title,
-  //@ts-ignore
      description: foundProject.description,
    }
  } 
