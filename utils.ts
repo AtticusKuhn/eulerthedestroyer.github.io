@@ -18,6 +18,6 @@ export const removeHTML = (html: string) => html.replace(/<[^>]+>/g, '')
 export function toSnakeCase(name: string) {
     return name.toLowerCase().replace(/\s/g, "-")
 }
-export function randomItemsFromArray<a>(array: [a], n: number){
+export function randomItemsFromArray<a>(array: a[], n: number){
     return array.sort(() => 0.5 - Math.random()).slice(0, n);
 }

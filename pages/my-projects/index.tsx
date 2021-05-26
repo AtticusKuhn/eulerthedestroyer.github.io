@@ -5,7 +5,9 @@ import {  listProjects, writeToPublic } from "@/lib/generateStaticData/projectGe
 import ProjectPreview from "@/components/Preview/ProjectPreview";
 import { NextSeo } from 'next-seo';
 
-export default function MyProjects({projects}){
+
+
+export default function MyProjects({projects} : {projects: [{ description: string, demoUrl: string, title: string, fullUrl: string, language: string}]}){
   const [searchValue, setSearchValue] = useState('');
   const filteredProjects = projects
     .filter((project) =>
@@ -28,6 +30,7 @@ export default function MyProjects({projects}){
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Search projects"
       />
+     {/*@ts-ignore*/}
     {filteredProjects.map(project=><ProjectPreview {...project} />)}
   </>
 }

@@ -1,12 +1,15 @@
 import { listProjects,makeJsString } from "@/lib/generateStaticData/projectGenerator"
 import { NextSeo } from 'next-seo';
 import BackButton from "@/components/BackButton"
+import { FullProject, Project } from "types";
 
+interface props {
+  js: string;
+  title: string;
+  description: string;
+}
 
-export default function TryJsProject({js, title, description}){
-  function handleClick(e) {
-    eval(js)
-  };
+const  TryJsProject: React.FC<props> = ({js, title, description}) =>{
   return (<>
     <NextSeo
       title={title}
@@ -21,14 +24,15 @@ export default function TryJsProject({js, title, description}){
    <BackButton />
    <p id="output" />
    <div id="container"></div>
-   <button onClick={handleClick}>run program</button>
+   <button onClick={_e => eval(js)}>run program</button>
   </>);
 };
+export default TryJsProject
 
 
-export async function getStaticProps({ params }){
+export async function getStaticProps({ params }: {params: {js:string}}){
   const projects = await listProjects()
-  const project = projects.filter(p=>p.type==="JavaScript").find(p=> p.id===params.js)
+  const project = projects.filter(p=>p.type==="JavaScript").find(p=> p.id===params.js) as FullProject
   const js = await makeJsString(project)
   return {props:{js, title:project.title, description: project.description}}
 
